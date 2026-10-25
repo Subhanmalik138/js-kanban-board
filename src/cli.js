@@ -90,7 +90,13 @@ function usage() {
 function main(argv) {
   const { args, flags } = parseArgs(argv);
   const service = new KanbanService(new JsonStore(flags.db || defaultDataPath()));
-  const [group, action, ...rest] = args;
+  let [group, action, ...rest] = args;
+  // Single-word commands (search, stats, export, import) carry their first
+  // positional in the `action` slot — fold it back into rest.
+  if (['search', 'stats', 'export', 'import'].includes(group) && action !== undefined) {
+    rest = [action, ...rest];
+    action = undefined;
+  }
 
   if (!group || group === 'help' || group === '--help') {
     console.log(usage());
