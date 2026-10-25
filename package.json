@@ -1,0 +1,1 @@
+{"bin":{"kanban":"./kanban.js"},"description":"Persistent CLI Kanban board manager: boards, lists, cards, labels, due dates, search and stats.","engines":{"node":">=18"},"license":"MIT","main":"src/kanban.js","name":"kanban-board-cli","scripts":{"start":"node kanban.js","test":"node --test tests/"},"type":"commonjs","version":"1.0.0"}
